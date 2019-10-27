@@ -1,0 +1,35 @@
+<html>
+<head>
+  <style>
+    .bg-1 {
+      background-color: #1abc9c; /* Green */
+      color: #ffffff;
+    }
+
+  </style>
+</head>
+
+<body>
+<div align="center" class="container-fluid bg-1 text-center">
+
+      <h2> Hello Dear Friend : Which city are you looking for? : </h2>
+      <input class="form-control-lg" type="text" #userinput placeholder="type the city name">
+      <button class="form-control-lg btn-primary" (click)="getCity(userinput.value)">search</button>
+      <h2 *ngIf="weather!=null">Weather in: {{ weather?.name }} ,{{ weather?.sys.country }} </h2>
+      <h2>{{ weather?.weather[0].main | weatherCondition}}</h2>
+       <b><p *ngIf="citynotfound!='' ">{{citynotfound}}</p></b>
+      <div *ngIf="weather!=null && weather?.weather[0].main == 'Rain'   " >
+       <img  src="/assets/rain.gif" />
+      </div>
+      <div *ngIf="weather!=null && weather?.weather[0].main == 'Clouds'   " >
+        <img  src="/assets/cloud.gif" />
+      </div>
+      <div *ngIf="weather!=null && weather?.weather[0].main == 'Clear'   " >
+        <img  src="/assets/giphy.gif" style="width: 256px ;height: 256px;" />
+      </div>
+
+</div>
+
+
+</body>
+</html>
